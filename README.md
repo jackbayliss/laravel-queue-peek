@@ -1,4 +1,5 @@
-#  A read-only Artisan command to peek at jobs sitting in your Laravel queues. 
+#  Laravel Queue Peek
+A read-only Artisan command to peek at jobs sitting in your Laravel queues. 
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/jackbayliss/laravel-queue-peek.svg?style=flat-square)](https://packagist.org/packages/jackbayliss/laravel-queue-peek)
 [![GitHub Tests Action Status](https://github.com/spatie/package-laravel-queue-peek-laravel/actions/workflows/run-tests.yml/badge.svg)](https://github.com/jackbayliss/laravel-queue-peek/actions?query=workflow%3Arun-tests+branch%3Amain)
