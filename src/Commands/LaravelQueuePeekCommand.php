@@ -3,6 +3,7 @@
 namespace JackBayliss\LaravelQueuePeek\Commands;
 
 use Illuminate\Console\Command;
+use Illuminate\Queue\Jobs\InspectedJob;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
 use Symfony\Component\Console\Attribute\AsCommand;
@@ -100,7 +101,7 @@ class LaravelQueuePeekCommand extends Command
     /**
      * Display the jobs in the console.
      *
-     * @param  \Illuminate\Support\Collection<int, \Illuminate\Queue\Jobs\InspectedJob>  $jobs
+     * @param  Collection<int, InspectedJob>  $jobs
      * @return void
      */
     protected function displayJobs(Collection $jobs)
@@ -116,7 +117,7 @@ class LaravelQueuePeekCommand extends Command
     /**
      * Display the jobs as JSON.
      *
-     * @param  \Illuminate\Support\Collection<int, \Illuminate\Queue\Jobs\InspectedJob>  $jobs
+     * @param  Collection<int, InspectedJob>  $jobs
      * @return void
      */
     protected function displayJobsAsJson(Collection $jobs)
