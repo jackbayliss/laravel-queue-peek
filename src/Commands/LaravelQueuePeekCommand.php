@@ -38,7 +38,7 @@ class LaravelQueuePeekCommand extends Command
     {
         $state = $this->option('state');
 
-        if (! in_array($state, ['pending', 'delayed', 'reserved'])) {
+        if (! in_array($state, ['pending', 'delayed', 'reserved'], true)) {
             $this->components->error('The state must be one of: pending, delayed, reserved.');
 
             return self::FAILURE;
