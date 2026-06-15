@@ -20,7 +20,7 @@ class LaravelQueuePeekCommandTest extends TestCase
         parent::tearDown();
     }
 
-    public function testItDisplaysJobsOnTheQueue()
+    public function test_it_displays_jobs_on_the_queue()
     {
         $this->app['config']->set('queue.default', 'redis');
         $this->app['config']->set('queue.connections.redis.queue', 'default');
@@ -46,7 +46,7 @@ class LaravelQueuePeekCommandTest extends TestCase
         $this->assertStringContainsString('5 minutes ago', $output);
     }
 
-    public function testItDisplaysWhenEmpty()
+    public function test_it_displays_when_empty()
     {
         $this->app['config']->set('queue.default', 'redis');
         $this->app['config']->set('queue.connections.redis.queue', 'default');
@@ -61,7 +61,7 @@ class LaravelQueuePeekCommandTest extends TestCase
         $this->assertStringContainsString('No pending jobs found on the [default] queue.', $output);
     }
 
-    public function testItCanOutputAsJson()
+    public function test_it_can_output_as_json()
     {
         $this->app['config']->set('queue.default', 'redis');
         $this->app['config']->set('queue.connections.redis.queue', 'default');
@@ -92,7 +92,7 @@ class LaravelQueuePeekCommandTest extends TestCase
         ], $jobs[0]);
     }
 
-    public function testItDisplaysDelayedJobs()
+    public function test_it_displays_delayed_jobs()
     {
         $this->app['config']->set('queue.default', 'redis');
         $this->app['config']->set('queue.connections.redis.queue', 'default');
@@ -115,7 +115,7 @@ class LaravelQueuePeekCommandTest extends TestCase
         $this->assertStringContainsString('App\\Jobs\\ProcessPodcast', $output);
     }
 
-    public function testItDisplaysReservedJobs()
+    public function test_it_displays_reserved_jobs()
     {
         $this->app['config']->set('queue.default', 'redis');
         $this->app['config']->set('queue.connections.redis.queue', 'default');
@@ -139,7 +139,7 @@ class LaravelQueuePeekCommandTest extends TestCase
         $this->assertStringContainsString('2 attempts', $output);
     }
 
-    public function testItUsesTheQueueOption()
+    public function test_it_uses_the_queue_option()
     {
         $this->app['config']->set('queue.default', 'redis');
 
@@ -153,14 +153,14 @@ class LaravelQueuePeekCommandTest extends TestCase
         $this->assertStringContainsString('No pending jobs found on the [high] queue.', $output);
     }
 
-    public function testItRejectsAnInvalidState()
+    public function test_it_rejects_an_invalid_state()
     {
         $output = $this->runPeekCommand(['--state' => 'failed'])->fetch();
 
         $this->assertStringContainsString('The state must be one of: pending, delayed, reserved.', $output);
     }
 
-    public function testItOutputsWhenQueueDoesNotSupportInspection()
+    public function test_it_outputs_when_queue_does_not_support_inspection()
     {
         $this->app['config']->set('queue.default', 'jack');
 
