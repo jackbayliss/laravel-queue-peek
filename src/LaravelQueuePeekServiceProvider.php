@@ -2,16 +2,17 @@
 
 namespace JackBayliss\LaravelQueuePeek;
 
+use Illuminate\Support\ServiceProvider;
 use JackBayliss\LaravelQueuePeek\Commands\LaravelQueuePeekCommand;
-use Spatie\LaravelPackageTools\Package;
-use Spatie\LaravelPackageTools\PackageServiceProvider;
 
-class LaravelQueuePeekServiceProvider extends PackageServiceProvider
+class LaravelQueuePeekServiceProvider extends ServiceProvider
 {
-    public function configurePackage(Package $package): void
+    public function boot(): void
     {
-        $package
-            ->name('laravel-queue-peek')
-            ->hasCommand(LaravelQueuePeekCommand::class);
+        if ($this->app->runningInConsole()) {
+            $this->commands([
+                LaravelQueuePeekCommand::class,
+            ]);
+        }
     }
 }
