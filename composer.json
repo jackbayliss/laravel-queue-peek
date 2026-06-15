@@ -1,17 +1,17 @@
 {
-    "name": ":vendor_slug/:package_slug",
-    "description": ":package_description",
+    "name": "jackbayliss/laravel-queue-peek",
+    "description": " A read-only Artisan command to peek at jobs sitting in your Laravel queues. ",
     "keywords": [
-        ":vendor_name",
+        "jackbayliss",
         "laravel",
-        ":package_slug"
+        "laravel-queue-peek"
     ],
-    "homepage": "https://github.com/:vendor_slug/:package_slug",
+    "homepage": "https://github.com/jackbayliss/laravel-queue-peek",
     "license": "MIT",
     "authors": [
         {
-            "name": ":author_name",
-            "email": "author@domain.com",
+            "name": "Jack Bayliss",
+            "email": "jjbdev@proton.me",
             "role": "Developer"
         }
     ],
@@ -30,18 +30,17 @@
         "pestphp/pest-plugin-laravel": "^4.0",
         "phpstan/extension-installer": "^1.4",
         "phpstan/phpstan-deprecation-rules": "^2.0",
-        "phpstan/phpstan-phpunit": "^2.0",
-        "spatie/laravel-ray": "^1.35"
+        "phpstan/phpstan-phpunit": "^2.0"
     },
     "autoload": {
         "psr-4": {
-            "VendorName\\Skeleton\\": "src/",
-            "VendorName\\Skeleton\\Database\\Factories\\": "database/factories/"
+            "JackBayliss\\LaravelQueuePeek\\": "src/",
+            "JackBayliss\\LaravelQueuePeek\\Database\\Factories\\": "database/factories/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "VendorName\\Skeleton\\Tests\\": "tests/",
+            "JackBayliss\\LaravelQueuePeek\\Tests\\": "tests/",
             "Workbench\\App\\": "workbench/app/"
         }
     },
@@ -63,10 +62,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "VendorName\\Skeleton\\SkeletonServiceProvider"
+                "JackBayliss\\LaravelQueuePeek\\LaravelQueuePeekServiceProvider"
             ],
             "aliases": {
-                "Skeleton": "VendorName\\Skeleton\\Facades\\Skeleton"
+                "LaravelQueuePeek": "JackBayliss\\LaravelQueuePeek\\Facades\\LaravelQueuePeek"
             }
         }
     },
