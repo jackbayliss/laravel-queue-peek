@@ -5,15 +5,11 @@
 [![GitHub Code Style Action Status](https://github.com/spatie/package-laravel-queue-peek-laravel/actions/workflows/fix-php-code-style-issues.yml/badge.svg)](https://github.com/jackbayliss/laravel-queue-peek/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
 [![Total Downloads](https://img.shields.io/packagist/dt/jackbayliss/laravel-queue-peek.svg?style=flat-square)](https://packagist.org/packages/jackbayliss/laravel-queue-peek)
 
-This is where your description should go. Limit it to a paragraph or two. Consider adding a small example.
+A read-only Artisan command for peeking at the jobs sitting in your Laravel queues, without dequeuing them.
 
-## Support us
+## Requirements
 
-[<img src="https://github-ads.s3.eu-central-1.amazonaws.com/laravel-queue-peek.jpg?t=1" width="419px" />](https://spatie.be/github-ad-click/laravel-queue-peek)
-
-We invest a lot of resources into creating [best in class open source packages](https://spatie.be/open-source). You can support us by [buying one of our paid products](https://spatie.be/open-source/support-us).
-
-We highly appreciate you sending us a postcard from your hometown, mentioning which of our package(s) you are using. You'll find our address on [our contact page](https://spatie.be/about-us). We publish all received postcards on [our virtual postcard wall](https://spatie.be/open-source/postcards).
+This package relies on the queue inspection methods (`pendingJobs`, `delayedJobs`, `reservedJobs`) introduced in Laravel 13, so it only supports Laravel 13+.
 
 ## Installation
 
@@ -23,38 +19,25 @@ You can install the package via composer:
 composer require jackbayliss/laravel-queue-peek
 ```
 
-You can publish and run the migrations with:
-
-```bash
-php artisan vendor:publish --tag="laravel-queue-peek-migrations"
-php artisan migrate
-```
-
-You can publish the config file with:
-
-```bash
-php artisan vendor:publish --tag="laravel-queue-peek-config"
-```
-
-This is the contents of the published config file:
-
-```php
-return [
-];
-```
-
-Optionally, you can publish the views using
-
-```bash
-php artisan vendor:publish --tag="laravel-queue-peek-views"
-```
-
 ## Usage
 
-```php
-$laravelQueuePeek = new JackBayliss\LaravelQueuePeek();
-echo $laravelQueuePeek->echoPhrase('Hello, JackBayliss!');
+```bash
+php artisan queue:peek
 ```
+
+By default this peeks at the pending jobs on the default queue connection. You can customise the connection, queue, state, and output:
+
+```bash
+php artisan queue:peek redis --queue=high --state=delayed --limit=10 --json
+```
+
+| Option | Description |
+| --- | --- |
+| `connection` | The queue connection to inspect (defaults to `queue.default`). |
+| `--queue` | The name of the queue to inspect. |
+| `--state` | One of `pending`, `delayed`, or `reserved` (default: `pending`). |
+| `--limit` | The maximum number of jobs to display (default: `25`). |
+| `--json` | Output the jobs as JSON. |
 
 ## Testing
 
